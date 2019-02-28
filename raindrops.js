@@ -26,7 +26,7 @@ function drawPoly(ctx, vertices){
 
 function drawSplash(canvas, ctx, splash, config){
     let curtime = splash.time/config.maxTime;
-    ctx.strokeStyle = "#555599" + prepad(Math.floor((1-i_exp(curtime)) * 255).toString(16), "0", 2);
+    ctx.strokeStyle = "#c7c7db" + prepad(Math.floor((1-i_exp(curtime)) * 255).toString(16), "0", 2);
     ctx.lineWidth = 2;
     ctx.beginPath();
     //ctx.arc(splash.x, splash.y, curtime * splash.size, 0, 2 * Math.PI);
@@ -87,7 +87,7 @@ function run(canvas, framerate){
             nextTimeout = config.getTimeout(framerate);
             timeout = 0;
         }
-        ctx.fillStyle = "#203070";
+        ctx.fillStyle = "#0f173a";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
         let wts = Math.sin(windTarget);
@@ -114,7 +114,7 @@ function run(canvas, framerate){
             let cursplash = splashes[index];
             
             if(cursplash.dropY != cursplash.y){
-                ctx.fillStyle = "#555599";
+                ctx.fillStyle = "#c7c7db";
                 ctx.beginPath();
                 drawPoly(ctx, [
                     { // Top-left vertex of rect
