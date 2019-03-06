@@ -4,9 +4,6 @@ window.addEventListener("load", () => {
 	canvas.width  = body.clientWidth * 2;
 	canvas.height = body.clientHeight * 2;
 
-	console.log(canvas.width);
-	console.log(canvas.height);
-
 	let ctx = canvas.getContext("2d");
 	ctx.fillStyle = "#FFF";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);

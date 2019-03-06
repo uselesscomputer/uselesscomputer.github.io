@@ -10,33 +10,40 @@ html, body {
 		</style>
 
 		<script>
-window.addEventListener("load", () => {
-	let frame = document.getElementById("framed");
+			window.addEventListener("load", () => {
+				let frame = document.getElementById("framed");
+				let path = window.location.href;
+				path = path.substring(0, path.lastIndexOf("/")) + "/projects/";
 
-    let previous = undefined;
+				let previous = undefined;
 
-    let endpoints = [
-        {url: "drops/drops.html", t: 120}, 
-        {url: "balls/balls.html", t: 60}, 
-        {url: "circles/circles.html", t: 15}, 
-        {url: "infosplash/splash.html", t: 30}
-    ];
-	let switch_project = () => {
-            let index = 0;
-            do {
-                    index = Math.floor(Math.random() * endpoints.length);
-            } while(previous == index);
+				let endpoints = [
+					{url: "drops/drops.html", t: 120}, 
+					{url: "balls/balls.html", t: 60}, 
+					{url: "circles/circles.html", t: 15}, 
+					{url: "infosplash/splash.html", t: 30}
+				];
+				let timeout = 0;
+				let switch_project = () => {
+					if (timeout)
+						clearTimeout(timeout);
+					let index = 0;
+					do {
+						index = Math.floor(Math.random() * endpoints.length);
+					} while(previous == index);
 
-            frame.width = window.innerWidth;
-            frame.height = window.innerHeight;
-            frame.src = "/projects/" + endpoints[index].url;
-            previous = index;
-            setTimeout(switch_project, 1000 * endpoints[index].t);
-        };
+					frame.width = window.innerWidth;
+					frame.height = window.innerHeight;
+					frame.src = path + endpoints[index].url;
+					previous = index;
+					timeout = setTimeout(switch_project, 1000 * endpoints[index].t);
+				};
 
-	switch_project();
-    });
-
+				window.addEventListener("keydown", () => {
+					switch_project();
+				});
+				switch_project();
+			});
 		</script>
 	</head>
 	<body>
