@@ -1,17 +1,43 @@
-<!DOCTYPE html>
-<html style="margin: 0; padding: 0; height: 100%;">
-    <head>
-        <meta charset="UTF-8">
-        <script src="raindrops.js"></script>
-        <script>
-            window.addEventListener("load", () => {
-                    let canvas = document.getElementById("showplane");
-                    run(canvas, 120);
-                });
-        </script>
-    </head>
+<html>
+	<head>
+		<style>
+html, body {
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+		</style>
 
-    <body style="margin: 0%; padding: 0%; height: 100%; cursor: none;">
-        <canvas style="position: fixed; width: 100%; height: 100%;" id="showplane"/>
-    </body>
+		<script>
+window.addEventListener("load", () => {
+	let frame = document.getElementById("framed");
+
+    let previous = undefined;
+
+    let endpoints = [
+        {url: "drops/drops.html", t: 120}, 
+        {url: "infosplash/splash.html", t: 30}
+    ];
+	let switch_project = () => {
+            let index = 0;
+            do {
+                    index = Math.floor(Math.random() * endpoints.length);
+            } while(previous == index);
+
+            frame.width = window.innerWidth;
+            frame.height = window.innerHeight;
+            frame.src = "/projects/" + endpoints[index].url;
+            previous = index;
+            setTimeout(switch_project, 1000 * endpoints[index].t);
+        };
+
+	switch_project();
+    });
+
+		</script>
+	</head>
+	<body>
+		<iframe id="framed" frameBorder="0"></iframe>
+	</body>
 </html>
