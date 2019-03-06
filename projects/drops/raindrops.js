@@ -54,7 +54,7 @@ function run(canvas, framerate){
     let nextWindTimeout = 0;
     let dropHeight = 10;
     let dropWidth = 0.5;
-    let fallspeed = 60;
+    let fallspeed = 30;
     let windTarget = -Math.PI  / 4;
     let nextWind = 0;
     let rectRadius = Math.sqrt((dropHeight ** 2) + (dropWidth ** 2));
