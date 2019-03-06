@@ -18,6 +18,10 @@ html, body {
 				let path = window.location.href;
 				path = path.substring(0, path.lastIndexOf("/")) + "/projects/";
 
+                frame.onload = () => {
+                    (frame.contentDocument || frame.contentWindow.document).body.style.cursor = 'none';
+                };
+
 				let previous = undefined;
 
 				let endpoints = [
