@@ -23,7 +23,7 @@ html, body {
 				let endpoints = [
 					{url: "drops/drops.html", t: 120}, 
 					{url: "balls/balls.html", t: 120}, 
-					{url: "circles/circles.html", t: 120}, 
+					{url: "circles/circles.html", t: 60}, 
 					{url: "infosplash/splash.html", t: 30}
 				];
 				let timeout = 0;
@@ -39,6 +39,10 @@ html, body {
 					frame.height = window.innerHeight;
 					frame.src = path + endpoints[index].url;
 					previous = index;
+                    
+                    let iframeDoc = frame.contentDocument || frame.contentWindow.document;
+                    iframeDoc.body.style.cursor = 'none';
+
 					timeout = setTimeout(switch_project, 1000 * endpoints[index].t);
 				};
 
